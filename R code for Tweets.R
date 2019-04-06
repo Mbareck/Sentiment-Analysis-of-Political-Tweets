@@ -1,3 +1,4 @@
+# load libs
 library(qdap)
 library(tidyverse)
 library(tidytext)
@@ -5,14 +6,14 @@ library(lubridate)
 library(stringr)
 library(tm)
 
-Col = read.csv(file.choose(), stringsAsFactors = FALSE)
-Led = read.csv(file.choose(), stringsAsFactors = FALSE)
-Gar = read.csv(file.choose(), stringsAsFactors = FALSE)
+Col <- read.csv("Data/CollinsArchives.csv", stringsAsFactors = F)
+Led <- read.csv("Data/LedingArchives.csv", stringsAsFactors = F)
+Gar <- read.csv("Data/GarnerArchives.csv", stringsAsFactors = F)
 
 Collins_gun_Tweets <- filter(Col, grepl ("gun|ccl|chcl|guns|murder|death|killer|violence|act562|act589|carry", text, ignore.case = TRUE))
 Leding_gun_Tweets <- filter(Led, grepl ("gun|ccl|chcl|guns|murder|death|killer|violence|act562|act589|carry", text, ignore.case = TRUE))
 Garner_gun_Tweets <- filter(Gar, grepl ("gun|ccl|chcl|guns|murder|death|killer|violence|act562|act589|carry", text, ignore.case = TRUE))
-gun_Tweets$text[1:5]
+Collins_gun_Tweets$text[1:5]
 
 ##combine all tweets by rows
 Collins_gun_Tweets <- Collins_gun_Tweets[-1]

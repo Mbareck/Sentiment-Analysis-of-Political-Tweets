@@ -5,9 +5,10 @@ library(lubridate)
 library(stringr)
 library(tm)
 
-nwa <- read.csv(file.choose(), stringsAsFactors = FALSE)
-malvern  <- read.csv(file.choose(), stringsAsFactors = FALSE)
-jonesboro  <- read.csv(file.choose(), stringsAsFactors = FALSE)
+#load data
+nwa <- rio::import("Data/NWA.csv")
+malvern  <- rio::import("Data/malvern.csv")
+jonesboro  <- rio::import("Data/Jonesboro.csv")
 
 #combine
 news <-  bind_rows(
