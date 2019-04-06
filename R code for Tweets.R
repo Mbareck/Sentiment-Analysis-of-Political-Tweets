@@ -41,7 +41,6 @@ view(tidy_tweets$word)
 #--------------------------------------------------------#
 library(lexicon)
 library(sentimentr)
-library(qdap)
 library(magrittr)
 library(syuzhet)
 # create a bing key for polarity
@@ -56,8 +55,8 @@ bing_key <- update_key(bing_key, x = data.frame(
 #calculate polarity 
 (pol <- tidy_tweets %$% polarity(word, Politician, polarity.frame = bing_key, constrain = T))
 
-plot(pol, low = "blue", high = "red")
-plot(scores(pol))
+plot(pol)
+
 #polarity scores as a data frame
 p_counts <- as.data.frame(counts(pol))
 p_scores <- as.data.frame(scores(pol))
@@ -70,13 +69,13 @@ p_scores <- as.data.frame(scores(pol))
 Collins_gun_Tweets <- as.character(Collins_gun_Tweets$text)
 Leding_gun_Tweets <- as.character(Leding_gun_Tweets$text)
 Garner_gun_Tweets <- as.character(Garner_gun_Tweets$text)
-head(Col_gun_Tweets)
+
 #get sentiment for each politician
 Gar_sentiment <- get_sentiment(Garner_gun_Tweets, method = "bing")
 # combine tweets with  sentiment
 sent_polarity <- data.frame(Garner_gun_Tweets, Gar_sentiment)
 #animation
-
+view(sent_polarity)
 #--------------------------------------------------------#
 #             calculate common words
 #--------------------------------------------------------#
